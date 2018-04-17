@@ -61,6 +61,26 @@
   }
   $('#greeting').text(greeting('Ronald'));
     </script>
+    <!-- ======================= WEB SERVICE LOGIC =================== -->
+
+    <script>
+  var googleBooksApi = "https://www.googleapis.com/books/v1/volumes?q=";
+  var query = "flowers+inauthor:keyes";
+  $.ajax({
+      url: googleBooksApi + query,
+      success: function(volumes){
+          console.log('vols=', volumes);
+          mapVolumes(volumes)
+      }
+  });
+
+  function mapVolumes(volumes) {
+      console.log('Volumes found = ', volumes.totalItems);
+  }
+
+
+    </script>
+
 
     <!-- ======================== UNIT-TESTS LOGIC ==================== -->
 
@@ -86,24 +106,6 @@
   (function() {
     testTheTruth();
   })()
-    
-    <!-- ======================= WEB SERVICE LOGIC =================== -->
-
-    <script>
-  var googleBooksApi = "https://www.googleapis.com/books/v1/volumes?q=";
-  var query = "flowers+inauthor:keyes";
-  $.ajax({
-      url: googleBooksApi + query,
-      success: function(volumes){
-          console.log('vols=', volumes);
-          mapVolumes(volumes)
-      }
-  });
-
-  function mapVolumes(volumes) {
-      console.log('Volumes found = ', volumes.totalItems);
-  }
-    
     
     
     
